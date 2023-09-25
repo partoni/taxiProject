@@ -20,7 +20,7 @@ app.use(express.json())
 //     res.status(200).json(body)
 // })
 app.use("/api",router)
-
+console.log(__dirname);
 const startServer = async()=>{
     try {
         await sequelize.authenticate()
@@ -42,7 +42,7 @@ const startServer = async()=>{
               id: 13
             }
           })
-          console.log('DRIVER----',driver);
+          // console.log('DRIVER----',driver);
         const photo = await fetch(`https://api.telegram.org/file/bot${tokenTg}/${driver.phone}`)
        .then(res =>res.body.pipe(fs.createWriteStream('./photo/image.jpg')))
         

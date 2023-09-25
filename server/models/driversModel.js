@@ -8,6 +8,9 @@ const Driver = sequelize.define('drivers',{
     auto:{type:DataTypes.STRING},
     phone:{type:DataTypes.STRING},
     role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
-    photo:{type:DataTypes.STRING}
+    pathPhoto:{type:DataTypes.STRING},
+    idBot:{type:DataTypes.INTEGER}
 })
+
+
 module.exports = Driver

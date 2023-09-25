@@ -1,5 +1,8 @@
 const {Router} = require('express')
+const botController = require('../controllers/botController')
 
-const router = new Router()
+const botRouter = new Router()
 
-router.post('/photo',botController)
+botRouter.post('/photo',botController)
+
+module.exports = botRouter

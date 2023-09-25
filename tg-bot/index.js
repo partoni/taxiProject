@@ -1,7 +1,7 @@
 const TelegramApi = require('node-telegram-bot-api');
 const fs = require('fs');
 const fetch = require('node-fetch');
-const request = require('request');
+
 const db = require('./db')
 
 // const client = new Client()

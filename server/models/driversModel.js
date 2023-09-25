@@ -7,9 +7,10 @@ const Driver = sequelize.define('drivers',{
     firstName:{type:DataTypes.STRING},
     auto:{type:DataTypes.STRING},
     phone:{type:DataTypes.STRING},
-    role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
+    // role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
     pathPhoto:{type:DataTypes.STRING},
-    idBot:{type:DataTypes.INTEGER}
+    idBot:{type:DataTypes.INTEGER},
+    callSign:{type:DataTypes.INTEGER}
 })
 
 

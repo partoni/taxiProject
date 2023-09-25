@@ -1,7 +1,7 @@
 const Driver = require("../models/driversModel")
 
 class botController{
-async update(req,res){
+async updatePhoto(req,res){
 try{const {path,driver:idBot} = req.body
 await Driver.update({
     pathPhoto:path

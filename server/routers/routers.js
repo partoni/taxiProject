@@ -2,9 +2,10 @@ const {Router} = require('express')
 
 const UserRouter = require('./UserRouter')
 const botRouter = require('./botRouter')
-const router = new Router()
+const driverRouter = require('./driversRouter')
+const routers = new Router()
 
 router.use('/users',UserRouter)
 router.use('/bot',botRouter)
-
-module.exports = router
+router.use('/driver',driverRouter)
+module.exports = routers

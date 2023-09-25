@@ -3,10 +3,10 @@ const driverController = require("../controllers/driverController");
 
 const driverRouter = new Router()
 
-router.get('/getDriver',driverController.getDriver)
-router.get('/getDrivers/:id',driverController.getDrivers)
-router.post('/addDriver',driverController.addDriver)
-router.post('/delDriver',driverController.delDriver)
-router.post('/updateDriver',driverController.updateDriver)
+driverRouter.get('/getDriver',driverController.getDriver)
+driverRouter.get('/getDrivers/:id',driverController.getDrivers)
+driverRouter.post('/addDriver',driverController.addDriver)
+driverRouter.post('/delDriver',driverController.delDriver)
+driverRouter.post('/updateDriver',driverController.updateDriver)
 
 module.exports = driverRouter

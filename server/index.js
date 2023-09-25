@@ -20,7 +20,7 @@ app.use(express.json())
 //     res.status(200).json(body)
 // })
 app.use("/api",routers)
-console.log(__dirname);
+console.log('______DIRNAME________-------',__dirname);
 const startServer = async()=>{
     try {
       await sequelize.authenticate()

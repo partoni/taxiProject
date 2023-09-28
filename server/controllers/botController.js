@@ -11,13 +11,13 @@ class botController{
                     idBot
                 }
                 })
-            // console.log('add photo to---------',driver)//get array [1] - amount of changed rows
+            
             const driver = await Driver.findOne({where:{idBot}})
-            console.log('add photo to---------',driver)
+           
             if(driver){
                 res.status(200).json(driver)
             }else{
-                console.log('this driver dous not exist');// get 
+                
                 throw new Error('Такого водителя нет')
         }
         }catch(error){

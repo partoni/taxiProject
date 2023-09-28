@@ -1,0 +1,6 @@
+.driver{
+    @apply m-2 flex justify-between bg-indigo-700 text-slate-200
+}
+.btnDelete{
+    @apply m-2 px-1 border-2 inline-block cursor-pointer bg-amber-800 rounded-lg
+}

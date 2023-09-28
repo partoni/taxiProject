@@ -1,13 +1,19 @@
+import { useDispatch } from "react-redux";
+import styles from "./driver.module.scss";
+import { delDriver } from "../../store/driverSlice";
 
 
-function Driver(props) {
+function Driver({driver}) {
+const dispatch = useDispatch()
+
    const removeDriver=()=>{
-
+    dispatch(delDriver({callSign:driver.callSign}))
     }
+
     return(
-        <div className="driverCell" style={{display:"flex"}} key={Date.now()}>
-            <p4>{props.name}</p4>
-            <div onClick={removeDriver} style={{border:"1px solid #000",cursor:"pointer",display:"inline-block"}}>delete</div>
+        <div className={styles.driver}  key={Date.now()}>
+            <p4>{driver.name}</p4>
+            <div onClick={removeDriver}  className={styles.btnDelete}>delete</div>
         </div>
     )
 }

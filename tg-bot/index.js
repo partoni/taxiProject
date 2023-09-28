@@ -47,7 +47,12 @@ bot.on('message', async (msg) => {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
               },
-              body:JSON.stringify({path:image.file_path,driver:msg.chat.id})
+              body:JSON.stringify(
+                    {
+                        path:image.file_path,
+                        driver:msg.chat.id
+                    }
+                )
         }).then(data=>data.json())
         .then(driver=>bot.sendMessage(msg.from.id,`ваш авто${driver.auto}`))
         //  request(`https://api.telegram.org/file/bot${token}/${image.file_path}`, function (error, response, body) {

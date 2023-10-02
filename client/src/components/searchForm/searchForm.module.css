@@ -1,0 +1,12 @@
+.main{
+   @apply  bg-indigo-600 border-y-8 border-gray-800 text-gray-300 m-2
+}
+.form{
+   @apply flex-col
+}
+.input{
+   @apply h-10 text-slate-800
+}
+.btnForm{
+   @apply border-2 cursor-pointer bg-indigo-900  rounded-lg hover:bg-indigo-500
+}

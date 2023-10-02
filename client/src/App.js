@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 function App() {
   let [store,setStore] = useState([])
   const drivers = useSelector(state=>state.drivers.drivers)
-  console.log(drivers);
+  
 //  useEffect(()=>{
 //   fetch('https://jsonplaceholder.typicode.com/users')
 //       .then(response => response.json())
@@ -22,7 +22,7 @@ function App() {
 // }
 //   )
 //  },[])
-
+console.log(`DRIVERS in  App---------${JSON.stringify(drivers)}`);
   return (
     <div className="App">
       <div className='main '>

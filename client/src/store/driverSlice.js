@@ -12,17 +12,19 @@ const drivers = [
 const driverSlice = createSlice({
     name:"drivers",
     initialState:{
-        drivers,
+        drivers
     },
     reducers:{
         addDriver(state,action){
+
             const newDriver = {
-                ...action.payload.driver
+                ...action.payload
             }
+            console.log(`ADD DRIVER_____${JSON.stringify(newDriver)}`);
             state.drivers.push(newDriver)
         },
         delDriver(state,action){
-            console.log(`DELDRIVER-------${action.payload.callSign}`);
+            
             state.drivers = state.drivers.filter(item=>item.callSign!==action.payload.callSign)
         },
         getDriver(state,action){

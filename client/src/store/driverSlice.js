@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
+
+
 
 const drivers = [
     {name:"fedya",callSign:1},
@@ -9,22 +11,59 @@ const drivers = [
     {name:"john",callSign:6},
 ]
 
+export const fetchDrivers = createAsyncThunk(
+    'drivers/getDrivers',
+    async function (_,{rejectWithValue}) {
+        try {
+            const data = await fetch('http://localhost:8080/api/driver/getDrivers')
+            console.log(data);
+            if(!data.ok)throw new Error('ошибка запроса')
+            const drivers = await data.json()
+            return drivers
+        
+        } catch (error) {
+           return rejectWithValue(error.message)
+        }
+       
+    }
+)
+export const addDriverAsync = createAsyncThunk(
+    'drivers/addDriver',
+    async function (driver,{rejectWithValue,dispatch}) {
+        try {
+            const data = await fetch('http://localhost:8080/api/driver/addDriver',{
+                method:"POST",
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(driver)
+            })
+            if(!data.ok) new Error('ошибка запроса')
+            const newDriver = await data.json()
+            dispatch(addDriver(newDriver))
+        } catch (error) {
+          return  rejectWithValue(error.message)
+        }
+    }
+)
+
 const driverSlice = createSlice({
     name:"drivers",
     initialState:{
-        drivers
+        drivers,
+        status:null,
+        error:null
     },
     reducers:{
         addDriver(state,action){
-
             const newDriver = {
                 ...action.payload
             }
-            console.log(`ADD DRIVER_____${JSON.stringify(newDriver)}`);
+            console.log(`reduser--------adddriver-------${state.drivers}`);
             state.drivers.push(newDriver)
         },
         delDriver(state,action){
-            
+            console.log(`DELDRIVER-------${action.payload.callSign}`);
             state.drivers = state.drivers.filter(item=>item.callSign!==action.payload.callSign)
         },
         getDriver(state,action){
@@ -44,6 +83,20 @@ const driverSlice = createSlice({
             }
                return item})
             
+        }
+    },
+    extraReducers:{
+        [fetchDrivers.pending]:(state,action)=>{
+            state.status = 'loading'
+            state.error = null
+        },
+        [fetchDrivers.fulfilled]:(state,action)=>{
+            state.status = 'resolved'
+            state.drivers= action.payload
+        },
+        [fetchDrivers.rejected]:(state,action)=>{
+            state.status = 'rejected'
+            state.error = action.payload
         }
     }
 })

@@ -26,7 +26,7 @@ class driverController{
            
             const drivers = await Driver.findAll()
           
-                res.status(200).json(driver)
+                res.status(200).json(drivers)
             
             }catch(error){
                 res.status(400).json(error.message)

@@ -12,7 +12,7 @@ const dispatch = useDispatch()
 
     return(
         <div className={styles.driver}  key={Date.now()}>
-            <p>{driver.name}</p>
+            <h4>{driver.name}</h4>
             <div onClick={removeDriver}  className={styles.btnDelete}>delete</div>
         </div>
     )

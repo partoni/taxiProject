@@ -5,15 +5,15 @@ const fs = require('fs')
 const sequelize  = require('./db')
 const Driver = require('./models/driversModel.js')
 const routers = require('./routers/routers.js')
-// const cors = require('cors')
+const cors = require('cors')
 const app = express()
 const PORT = process.env.PORT||5000
 const tokenTg = process.env.TOKEN_TELEGRAMM
 
-// app.use(cors({
-//     credentials:true,
-//     origin:"http://localhost:5000"
-// }))
+app.use(cors({
+    credentials:true,
+    origin:"http://localhost:3000"
+}))
 app.use(express.json())
 // app.get('/',(req,res)=>{
 //     const body= req.query

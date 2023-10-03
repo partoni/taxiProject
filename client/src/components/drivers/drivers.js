@@ -2,12 +2,16 @@
 
 import Driver from "../driver/driver"
 
-const ListDrivers = ({drivers,setStore})=>{
-
-
+const ListDrivers = ({drivers})=>{
+// drivers.forEach(element => {
+//     // console.log(element);
+// });
+// console.log(`LISTDRIVERS-------${drivers}`);
 return(
     <>
-    {drivers.map(driver=><Driver driver={driver} setStore={setStore}/>)}
+    {drivers.map(driver=>{
+        // console.log(driver);
+    return <Driver driver={driver} />})}
     </>
 )
 }

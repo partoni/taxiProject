@@ -1,15 +1,18 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 
-
 const drivers = [
-    {name:"fedya",callSign:1},
-    {name:"gera",callSign:2},
-    {name:"geran",callSign:3},
-    {name:"gera",callSign:4},
-    {name:"johnny",callSign:5},
-    {name:"john",callSign:6},
+    {id:1,
+    name:'Петя',
+    firstName:'Петров',
+    auto:'волга',
+    phone:'98726234',
+    // role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
+    pathPhoto:'/photo',
+    idBot:'983837347',
+    callSign:'1000'}
 ]
+
 
 export const fetchDrivers = createAsyncThunk(
     'drivers/getDrivers',
@@ -50,7 +53,17 @@ export const addDriverAsync = createAsyncThunk(
 const driverSlice = createSlice({
     name:"drivers",
     initialState:{
-        drivers,
+        drivers:[
+            {id:1,
+            name:'Петя',
+            firstName:'Петров',
+            auto:'волга',
+            phone:'98726234',
+            // role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
+            pathPhoto:'/photo',
+            idBot:'983837347',
+            callSign:'1000'}
+        ],
         status:null,
         error:null
     },

@@ -1,0 +1,47 @@
+.main{
+    width: 100%;
+    height: 600px;
+    display: grid;
+  grid-template-columns: 1fr 5fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+    "head head"
+    "nav main"
+    "foot foot";
+}
+
+.header{
+    background-color: black;
+    color: white;
+    grid-area: head;
+    border: 1px solid #000;
+    /* @apply bg-slate-500 */
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+
+    
+}
+.nav{
+    background-color: rgb(51, 51, 53);
+    color:#fff;
+    grid-area: nav;
+/* @apply bg-slate-300 */
+}
+
+.cont{
+grid-area: main;
+}
+
+.footer{
+    background-color: black;
+    color: white;
+    grid-area: foot;
+    /* @apply bg-slate-500 */
+}
+.active{
+    color: rgb(123, 123, 124);
+    text-decoration: underline;
+}

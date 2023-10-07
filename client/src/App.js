@@ -1,17 +1,22 @@
 
 import { useEffect } from 'react';
-import './App.css';
-
-
-import { ListDrivers } from './components/drivers/drivers';
-import SearchForm from './components/searchForm/SearchForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDrivers } from './store/driverSlice';
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
 
+import { ListDrivers } from './components/drivers/listDrivers/ListDrivers';
+// import SearchForm from './components/drivers/searchForm/SearchForm';
+
+import { fetchDrivers } from './store/driverSlice';
+// import {FormDriver} from './components/drivers/form/formDriver';
+import { DriversPage } from './components/drivers/DriversPage';
+import { DispetchersPage } from './components/dispetchers/DispetchersPage';
+import { HomePage } from './components/homePage/HomePage';
+import {  MainPage } from './components/layout/Layout.js';
 
 function App() {
  
-  const {error,status,drivers}= useSelector(state=>state.drivers)
+  // const {error,status,drivers}= useSelector(state=>state.drivers)
   
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -19,17 +24,28 @@ function App() {
   },[])
 
   return (
+    
     <div className="App">
-      <div className='main '>
-        <SearchForm/>
+     
+      <Routes>
+        <Route path='/' element={<MainPage/>}>
+            <Route path='/drivers' element={<DriversPage />}/>
+            <Route path='/dispetchers' element={<DispetchersPage/>}/>
+            <Route path='*' element={<h2>такой страницы пока нет</h2>}/>
+            <Route index element={<HomePage/>}/>
+         </Route>
+    </Routes>
+        {/* <FormDriver/>*/}
+        {/* <SearchForm/> */}
        {/* {console.log("in return"+store)} */}
-       {status==='loading'&&'заерузка данных'}
-     { (status==='rejected')?error:<ListDrivers drivers = {drivers} />}
-      </div>
+       {/*status==='loading'&&'заерузка данных'}*/}
+
+     {/* (status==='rejected')?error:<ListDrivers drivers = {drivers} />} */}
+     
      
 
     </div>
-  );
-}
+  )
+  }
 
 export default App;

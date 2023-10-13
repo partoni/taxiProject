@@ -12,7 +12,7 @@ return(
     <div>
     {store.drivers.map(driver=>{
         // console.log(driver);
-    return <Driver driver={driver} />})}
+    return <Driver driver={driver} key={driver.id}/>})}
     </div>
 )
 }

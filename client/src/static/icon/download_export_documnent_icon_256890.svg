@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" viewBox="0 0 32 32">
+        <defs>
+            <style>
+                .cls-1{fill:none;}.cls-1,.cls-2{stroke-width:0px;}
+            </style>
+        </defs>
+        <g id="icons">
+            <g id="Organization">
+                <g id="File">
+                    <polygon class="cls-2" points="13 21 26.17 21 23.59 23.59 25 25 30 20 25 15 23.59 16.41 26.17 19 13 19 13 21"/><path class="cls-2" d="m22,14v-4c0-.27-.11-.52-.29-.71l-7-7c-.19-.19-.44-.29-.71-.29H4c-1.1,0-2,.9-2,2v24c0,1.1.9,2,2,2h16c1.1,0,2-.9,2-2v-2h-2v2H4V4h8v6c0,1.1.9,2,2,2h6v2h2Zm-8-4v-5.59l5.59,5.59h-5.59Z"/>
+                        <rect id="_Transparent_Rectangle_" class="cls-1" width="32" height="32"/>
+                </g>
+            </g>
+        </g>
+    </svg>

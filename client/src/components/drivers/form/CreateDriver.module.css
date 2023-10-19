@@ -54,10 +54,15 @@ h3{color: rgb(11, 11, 11);}
 @apply border-2 px-2 border-gray-900 rounded-md
 }
 .img{
-width: 50px;
-height: 65px;
 
 
+
+}
+.img>img{
+    display: inline-block;
+    margin: 0px 5px;
+    min-width: 50px;
+    height: 65px;
 }
 
 .line{}

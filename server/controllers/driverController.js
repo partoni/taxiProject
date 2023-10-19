@@ -1,4 +1,6 @@
 const Driver = require("../models/driversModel")
+const fs = require('fs')
+const path = require('path')
 
 class driverController{
 
@@ -35,7 +37,21 @@ class driverController{
     }
     static async addDriver(req,res){
         try{
-            const {id,name,auto,callsign,firstName,phone,pathPhoto,idBot} = req.body
+            const {id,name,auto,callsign,firstName,phone} = req.body
+            const pathPhoto = path.join((path.parse(__filename)).root,'/taxi/server/photo',`/${req.body.name}`)
+            fs.mkdirSync(pathPhoto)
+            const files = req.files
+            for(let name in files){
+                const file = files[name]
+                console.log(file);
+                file.mv(`${pathPhoto}/${file.name}`,function(err){
+                  
+                  if (err)res.status(500).json(err)
+                })
+            }
+              
+            
+
             const driver = await Driver.create(
                 {
                     id,
@@ -45,7 +61,7 @@ class driverController{
                     firstName,
                     phone,
                     pathPhoto,
-                    idBot   
+                    // idBot   
             }            
             )
             if(driver){

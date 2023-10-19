@@ -6,9 +6,12 @@ const sequelize  = require('./db')
 const Driver = require('./models/driversModel.js')
 const routers = require('./routers/routers.js')
 const cors = require('cors')
+const fileupload = require('express-fileupload')
+
 const app = express()
 const PORT = process.env.PORT||5000
 const tokenTg = process.env.TOKEN_TELEGRAMM
+ 
 
 app.use(cors({
     credentials:true,
@@ -19,6 +22,7 @@ app.use(express.json())
 //     const body= req.query
 //     res.status(200).json(body)
 // })
+app.use(fileupload())
 app.use("/api",routers)
 console.log('______DIRNAME________-------',__dirname);
 const startServer = async()=>{

@@ -1,6 +1,6 @@
-// import 
+ 
 
-import Driver from "../driver/Driver"
+import Driver from "../driver/driver"
 
 const ListDrivers = ({store})=>{
 // drivers.forEach(element => {

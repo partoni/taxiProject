@@ -35,8 +35,8 @@ const startServer = async()=>{
             }
           })
           
-        const photo = await fetch(`https://api.telegram.org/file/bot${tokenTg}/${driver.phone}`)
-       .then(res =>res.body.pipe(fs.createWriteStream('./photo/image.jpg')))
+      //   const photo = await fetch(`https://api.telegram.org/file/bot${tokenTg}/${driver.phone}`)
+      //  .then(res =>res.body.pipe(fs.createWriteStream('./photo/image.jpg')))
         
         app.listen(PORT,()=>console.log(`port:${PORT}`))
     } catch (error) {

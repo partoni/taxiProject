@@ -25,23 +25,25 @@ class driverController{
     }
     static async getDrivers(req,res){
         try{
-           
+           console.log('----GetDrivers has worked----');
             const drivers = await Driver.findAll()
           
                 res.status(200).json(drivers)
             
             }catch(error){
+                console.log("ERROR-----");
                 res.status(400).json(error.message)
         }
 
     }
     static async addDriver(req,res){
         try{
-            const {id,name,auto,callsign,firstName,phone} = req.body
-            const pathPhoto = path.join((path.parse(__filename)).root,'/taxi/server/photo',`/${req.body.name}`)
+            const {name:driverName,auto,callSign,firstName,phone} = req.body
+            const pathPhoto = path.join((path.parse(__filename)).root,'/taxi/server/photo',`/${req.body.callSign}`)
             fs.mkdirSync(pathPhoto)
-            const files = req.files
-            for(let name in files){
+            const files = req.files&&null
+            if(files){for(let name in files){
+                console.log('files________',files);
                 const file = files[name]
                 console.log(file);
                 file.mv(`${pathPhoto}/${file.name}`,function(err){
@@ -50,37 +52,39 @@ class driverController{
                 })
             }
               
-            
+        }
 
             const driver = await Driver.create(
-                {
-                    id,
-                    name,
+                {                   
+                    driverName,
                     auto,
-                    callsign,
+                    callSign,
                     firstName,
                     phone,
                     pathPhoto,
                     // idBot   
             }            
             )
+            
             if(driver){
+                console.log('driver----',driver);
                 res.status(200).json(driver)}
             
             }catch(error){
+                console.log('ERROr----',error.message);
                 res.status(400).json(error.message)
         }
 
     }
     static async delDriver(req,res){
         try{
-            const {callsign} = req.body
+            const {callSign} = req.body
             await Driver.destroy({
                 where:{
-                    callsign
+                    callSign
                 }
             })
-            res.status(200).text('удален')
+            res.status(200).json({del:true})
             }catch(error){
                 res.status(400).json(error.message)
             }

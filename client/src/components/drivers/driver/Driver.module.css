@@ -1,6 +1,9 @@
 .driver{
-    @apply m-2 flex justify-between  items-center bg-indigo-700 text-slate-200
+    background-color: rgb(209 213 219 );
+    @apply m-2 flex justify-between  items-center text-stone-700;
 }
 .btnDelete{
-    @apply m-2 px-1 border-2 inline-block cursor-pointer bg-amber-800 rounded-lg
+    background-color: rgb(85, 87, 88);
+    
+    @apply m-2 px-1 border-2 inline-block text-white cursor-pointer rounded-lg;
 }

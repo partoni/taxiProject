@@ -15,13 +15,14 @@ const drivers = [
 
 
 export const fetchDrivers = createAsyncThunk(
-    'drivers/getDrivers',
+    'drivers/fetchDrivers',
     async function (_,{rejectWithValue}) {
         try {
             const data = await fetch('http://localhost:8080/api/driver/getDrivers')
-            console.log(data);
+            
             if(!data.ok)throw new Error('ошибка запроса')
             const drivers = await data.json()
+            console.log('createAsyncThunk-------',drivers);
             return drivers
         
         } catch (error) {
@@ -31,19 +32,45 @@ export const fetchDrivers = createAsyncThunk(
     }
 )
 export const addDriverAsync = createAsyncThunk(
-    'drivers/addDriver',
+    'drivers/addDriverAsync',
     async function (driver,{rejectWithValue,dispatch}) {
         try {
             const data = await fetch('http://localhost:8080/api/driver/addDriver',{
+                method:"POST",
+                // headers:{
+                //     'Content-Type':'application/json'
+                // },
+                body:driver
+            })
+            console.log('DATA______',data);
+            if(!data.ok) new Error('ошибка запроса')
+            const newDriver = await data.json()
+            // dispatch(addDriver(newDriver))
+            console.log('ADDDriversAsync_____',newDriver);
+            return newDriver
+        } catch (error) {
+          return  rejectWithValue(error.message)
+        }
+    }
+)
+export const delDriverAsync = createAsyncThunk(
+    'drivers/delDriverAsync',
+    async function (driver,{rejectWithValue,dispatch}) {
+        try {
+            const data = await fetch('http://localhost:8080/api/driver/delDriver',{
                 method:"POST",
                 headers:{
                     'Content-Type':'application/json'
                 },
                 body:JSON.stringify(driver)
             })
-            if(!data.ok) new Error('ошибка запроса')
-            const newDriver = await data.json()
-            dispatch(addDriver(newDriver))
+            console.log('DATA_DEL------',await data.json())
+            dispatch(delDriver(driver))
+            // if(!data.ok) new Error('ошибка запроса')
+            // const newDriver = await data.json()
+            // dispatch(addDriver(newDriver))
+            // console.log('ADDDriversAsync_____',newDriver);
+            // return newDriver
         } catch (error) {
           return  rejectWithValue(error.message)
         }
@@ -69,6 +96,7 @@ const driverSlice = createSlice({
     },
     reducers:{
         addDriver(state,action){
+            console.log('ADDdriver____',action.payload);
             const newDriver = {
                 ...action.payload
             }
@@ -77,7 +105,10 @@ const driverSlice = createSlice({
         },
         delDriver(state,action){
             console.log(`DELDRIVER-------${action.payload.callSign}`);
-            state.drivers = state.drivers.filter(item=>item.callSign!==action.payload.callSign)
+            state.drivers = state.drivers.filter(item=>{
+                console.log('item.callSign----',item.callSign)
+                console.log('action.payload.callSign-----',action.payload.callSign)
+                return item.callSign!==action.payload.callSign})
         },
         getDriver(state,action){
             const argName = action.payload.argName
@@ -108,6 +139,14 @@ const driverSlice = createSlice({
             state.drivers= action.payload
         },
         [fetchDrivers.rejected]:(state,action)=>{
+            state.status = 'rejected'
+            state.error = action.payload
+        },
+        [addDriverAsync.fulfilled]:(state,action)=>{
+            state.status = 'resolved'
+            state.drivers = [...state.drivers,action.payload ] 
+        },
+        [addDriverAsync.rejected]:(state,action)=>{
             state.status = 'rejected'
             state.error = action.payload
         }

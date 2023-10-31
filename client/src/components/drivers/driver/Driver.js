@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 import styles from "./Driver.module.css";
-import { delDriver } from "../../../store/driverSlice";
+import { delDriverAsync } from "../../../store/driverSlice";
 
 
 function Driver({driver}) {
 const dispatch = useDispatch()
-
+console.log(`Driver-------${driver.callSign}`);
    const removeDriver=()=>{
-    dispatch(delDriver({callSign:driver.callSign}))
+    dispatch(delDriverAsync({callSign:driver.callSign}))
     }
 
     return(

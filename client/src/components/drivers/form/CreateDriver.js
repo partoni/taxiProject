@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react"
 import styles from "./CreateDriver.module.css"
 import { useForm } from "react-hook-form"
+import { addDriverAsync } from "../../../store/driverSlice"
+import { useDispatch } from "react-redux"
 
 const CreateDriver=()=>{
+    const dispatch =useDispatch()
+    // const {error,status,drivers}= useSelector(state=>state.drivers)
     const {register,watch,reset,formState:{errors},handleSubmit} = useForm(
         {
           mode:'onChange'  
@@ -35,19 +39,25 @@ const CreateDriver=()=>{
     const onSubmit = async (data)=>{
         const formData = new FormData()
         for(let name in data){
-            formData.append(name,data.name)
+            formData.append(name,data[name])
         }
-       
+       if(data.files.lenght!==0){
         const fileList=[...data.files]
         fileList.map((file,index)=>{
           formData.append(`${index}${Date.now()}`,file,file.name)
         })
-        const dataFetch = await fetch('http://localhost:8080/api/driver/addDriver',{
-            method:'POST',
-            body:formData
-        })
+       }
 
-        const driver = await dataFetch.json()
+       console.log('ONSUBMIT-------',formData);
+       console.log('ONSUBMIT-------DATA-',data);
+       
+        dispatch(addDriverAsync(formData))
+        // const dataFetch = await fetch('http://localhost:8080/api/driver/addDriver',{
+        //     method:'POST',
+        //     body:formData
+        // })
+
+        // const driver = await dataFetch.json()
         setImgList([])
         reset()
     }

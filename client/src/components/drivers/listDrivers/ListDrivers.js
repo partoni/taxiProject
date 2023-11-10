@@ -2,7 +2,7 @@
 
 import Driver from "../driver/driver"
 
-const ListDrivers = ({store})=>{
+const ListDrivers = ({store,showDetails})=>{
 // drivers.forEach(element => {
 //     // console.log(element);
 // });
@@ -12,7 +12,7 @@ return(
     <div>
     {store.drivers.map(driver=>{
         // console.log(driver);
-    return <Driver driver={driver} key={driver.id}/>})}
+    return <Driver showDetails={showDetails} driver={driver} key={driver.id}/>})}
     </div>
 )
 }

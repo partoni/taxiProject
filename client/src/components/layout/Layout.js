@@ -5,16 +5,16 @@ const MainPage = ()=>{
     return(
         <div className={styles.main}>
             <div className={styles.header}>
-                <div><NavLink to='/' className={setActive}>Главная</NavLink></div>
+                <div><NavLink to='/home' className={setActive}>Главная</NavLink></div>
                 <div><NavLink to='/V'className={setActive}>Волхов</NavLink></div>
-                <div><NavLink to='/K'className={setActive}>Кириши</NavLink></div>
+                <div><NavLink to='/T'className={setActive}>Тихвин</NavLink></div>
             </div>
             <div className={styles.nav}>
-                
-            <div><NavLink to='/dispetchers'>Диспетчера</NavLink></div> 
-            <div> <NavLink to='/drivers'>Водители</NavLink></div>
+                <div><NavLink to='/dispetchers'>Диспетчера</NavLink></div> 
+                <div> <NavLink to='/drivers'>Водители</NavLink></div>
             </div>
-            <div  className={styles.cont}>
+
+            <div  className={styles.cont} >
                 <Outlet/>
             </div>
                 <div className={styles.footer}>

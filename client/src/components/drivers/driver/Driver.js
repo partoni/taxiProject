@@ -1,23 +1,23 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import styles from "./Driver.module.css";
-import { delDriverAsync } from "../../../store/driverSlice";
+// import { delDriverAsync } from "../../../store/driverSlice";
 
 
-function Driver({driver}) {
-const dispatch = useDispatch()
+function Driver({driver,showDetails}) {
+// const dispatch = useDispatch()
 console.log(`Driver-------${driver.callSign}`);
-   const removeDriver=()=>{
-    dispatch(delDriverAsync({callSign:driver.callSign}))
-    }
+//    const removeDriver=()=>{
+//     dispatch(delDriverAsync({callSign:driver.callSign}))
+//     }
 
     return(
-        <div className={styles.driver}  key={Date.now()}>
+        <div className={styles.driver} onClick={()=>showDetails(driver)} key={Date.now()}>
             <span>{driver.callSign}</span>
-            <span>{driver.name}</span>
+            <span>{driver.driverName}</span>
             <span>{driver.firstName}</span>
             <span>{driver.phone}</span>
-
-            <div onClick={removeDriver}  className={styles.btnDelete}>delete</div>
+            <span>{driver.auto}</span>
+            {/* <div onClick={removeDriver}  className={styles.btnDelete}>delete</div> */}
         </div>
     )
 }

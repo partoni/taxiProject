@@ -1,0 +1,7 @@
+.forms{
+   @apply flex gap-2 p-2;
+   div:nth-child(2){
+    @apply flex-grow;
+   }
+}
+

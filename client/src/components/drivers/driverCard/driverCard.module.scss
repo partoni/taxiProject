@@ -1,0 +1,48 @@
+.card{
+    @apply w-full;
+}
+
+.form{
+  
+    @apply grid grid-cols-2;
+
+
+}
+
+
+.item{
+    @apply m-2   p-2;
+}
+
+// input{
+//     @apply block w-full;
+
+// }
+
+.field{
+    @apply border-2 block border-gray-900 rounded-lg relative cursor-text pt-1;
+
+    span{
+        @apply absolute block text-gray-50 top-0 left-0;
+    }
+
+    input{
+        
+        @apply bg-main block w-full left-2 outline-none ;
+    }
+    input:-webkit-autofill {
+        -webkit-box-shadow: inset 0 0 0 50px #333335 ;}  //it is to change color autocomplete
+    input:valid+span, 
+    input:focus+span{
+        @apply left-3 -top-3.5 transition-all px-1 duration-300;
+    }
+
+}
+
+.btn{
+    @apply border-2 cursor-pointer rounded-md hover:bg-neutral-800 place-self-center px-2 col-span-2;
+    
+    input{
+        @apply cursor-pointer ;
+    }
+}

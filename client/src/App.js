@@ -28,11 +28,13 @@ function App() {
     <div className="App">
      
       <Routes>
-        <Route path='/' element={<MainPage/>}>
+        <Route path='/'element={<MainPage/>} >
             <Route path='/drivers' element={<DriversPage />}/>
             <Route path='/dispetchers' element={<DispetchersPage/>}/>
             <Route path='*' element={<h2>такой страницы пока нет</h2>}/>
-            <Route index element={<HomePage/>}/>
+            <Route path='/T' element={<h2>такой страницы пока нет</h2>}/>
+            <Route path='/V' element={<h2>такой страницы пока нет</h2>}/>
+            <Route path='/home' element={<HomePage/>}/>
          </Route>
     </Routes>
         {/* <FormDriver/>*/}

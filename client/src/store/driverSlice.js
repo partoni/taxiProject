@@ -82,7 +82,7 @@ const driverSlice = createSlice({
     initialState:{
         drivers:[
             {id:1,
-            name:'Петя',
+            driverName:'Петя',
             firstName:'Петров',
             auto:'волга',
             phone:'98726234',
@@ -92,7 +92,8 @@ const driverSlice = createSlice({
             callSign:'1000'}
         ],
         status:null,
-        error:null
+        error:null,
+        city:'volhov'
     },
     reducers:{
         addDriver(state,action){

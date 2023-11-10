@@ -1,0 +1,32 @@
+.card {
+  @apply w-full;
+}
+
+.form {
+  @apply grid grid-cols-2;
+}
+
+.item {
+  @apply m-2;
+}
+
+.field {
+  @apply border-2 block border-gray-900 rounded-lg relative cursor-text;
+  /* input:valid+span, */
+}
+.field span {
+  @apply absolute inline-block;
+}
+.field input {
+  @apply bg-main left-2 absolute outline-none;
+}
+.field input:focus + span {
+  @apply left-3 -top-3.5 transition-all px-1 duration-300;
+}
+
+.btn {
+  @apply border-2 cursor-pointer rounded-md hover:bg-neutral-800 place-self-center px-2 col-span-2;
+}
+.btn input {
+  @apply cursor-pointer;
+}/*# sourceMappingURL=driverCard.module.css.map */

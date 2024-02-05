@@ -33,3 +33,9 @@
 .btn input {
   @apply cursor-pointer;
 }/*# sourceMappingURL=driverCard.module.css.map */
+.btN{
+  @apply flex  p-2
+}
+.btNitem{
+  @apply border-gray-200 rounded-xl border-2 p-1
+}

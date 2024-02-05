@@ -100,8 +100,16 @@ function onSubmit(data) {
                             <span>Телефон</span>
                         </label>
                     </div>
-                    
-                    <div className={styles.itemBtn}>
+                    <div className={styles.btN}>
+                        <div className={styles.btNitem}>
+                            сохранить
+                        </div>
+                        <div className={styles.btNitem}>
+                            удалить
+                        </div>
+                        
+                    </div>
+                    {/* <div className={styles.itemBtn}>
 
                         <div className={styles.btn}>
                             <input  type="submit" value={"сохранить"}/>
@@ -109,7 +117,7 @@ function onSubmit(data) {
                         <div className={styles.btn}>
                             <input  type="submit" value={"удалить"}/>
                         </div>
-                    </div>
+                    </div> */}
                    
                    
                     

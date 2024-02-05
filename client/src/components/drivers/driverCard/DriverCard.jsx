@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form'
-import styles from './driverCard.module.scss'
+import styles from './driverCard.module.css'
 import { useEffect } from 'react'
 const initialDriver = {
     callSign:"100"
 }
 const DriverCard = ({driver})=>{
     const ownDriver = driver 
-
+console.log('DriverCard-----',ownDriver);
 const {register,formState:{errors},handleSubmit,reset}=useForm({
     mode:'onChange',
     defaultValues:{
@@ -15,12 +15,13 @@ const {register,formState:{errors},handleSubmit,reset}=useForm({
 })
 
 useEffect(()=>{
-    const{name,callSign}=ownDriver
+    
     reset(
         {...ownDriver}
     )
-})
+},[ownDriver])
 function onSubmit(data) {
+    console.log(data);
     
 }
     return(
@@ -30,7 +31,7 @@ function onSubmit(data) {
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.item}>
                         <label className={styles.field}>
-                            <input type="text" required autocomplete='off' {...register('callSign',{
+                            <input type="number" required autocomplete='off' {...register('callSign',{
                                 required:{
                                     value:true,
                                     message:"Validation is working"
@@ -67,7 +68,7 @@ function onSubmit(data) {
                     <div className={styles.item}>
                         <label className={styles.field}>
                             
-                            <input type="text" required  {...register('lastName')}></input>
+                            <input type="text" required {...register('lastName')}></input>
                             <span>Отчество</span>
                         </label>
                     </div>
@@ -81,7 +82,7 @@ function onSubmit(data) {
                     <div className={styles.item}>
                         <label className={styles.field}>
                             
-                            <input type="text" required  {...register('numberAuto')}></input>
+                            <input type="text" required {...register('numberAuto')}></input>
                             <span>Номер</span>
                         </label>
                     </div>
@@ -99,9 +100,17 @@ function onSubmit(data) {
                             <span>Телефон</span>
                         </label>
                     </div>
-                    <div className={styles.btn}>
-                        <input  type="submit" value={"сохранить"}/>
+                    
+                    <div className={styles.itemBtn}>
+
+                        <div className={styles.btn}>
+                            <input  type="submit" value={"сохранить"}/>
+                        </div>
+                        <div className={styles.btn}>
+                            <input  type="submit" value={"удалить"}/>
+                        </div>
                     </div>
+                   
                    
                     
                 </form>

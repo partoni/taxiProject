@@ -1,0 +1,38 @@
+.modal{
+    @apply fixed inset-0 bg-slate-800/5 backdrop-blur;
+    // .svg{
+    //     @apply w-[200px] h-[200px] border-gray-100 border-2;
+    // }
+    /* .window{
+        @apply h-80 max-w-[640px] bg-slate-50 mx-auto;
+    } */
+}
+.window{
+    @apply m-0 p-0 overflow-hidden max-w-[640px] h-[200px] mx-auto relative;
+}
+.svg{
+    fill: #FFEB3B;
+    position: absolute;
+    left:75%;
+    animation: play 3s linear,
+    col 1500ms linear infinite;
+    animation-fill-mode:forwards;
+    // background-image: linear-gradient(90deg, #000,80%, #fff);
+}
+@keyframes play{
+
+100%{
+left:0;
+}
+}
+@keyframes col{
+0%{
+    fill: crimson;
+}
+50%{
+    fill:rgb(250, 219, 66) ;
+}
+100%{
+    fill:crimson ;
+}
+}

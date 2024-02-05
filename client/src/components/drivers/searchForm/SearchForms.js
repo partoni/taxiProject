@@ -23,7 +23,7 @@ export default function(){
     return(        
        <div className={styles.forms} >
         <Card>
-          <ListDrivers store={store} showDetails={showDetails}/>
+          <ListDrivers store={store} chosenDriver={driver} showDetails={showDetails}/>
         </Card>
         <Card>
           <DriverCard driver={driver} className={styles.two} />

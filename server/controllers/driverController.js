@@ -25,7 +25,8 @@ class driverController{
     }
     static async getDrivers(req,res){
         try{
-           console.log('----GetDrivers has worked----');
+            const city = req.params
+           console.log('----GetDrivers has worked----',city);
             const drivers = await Driver.findAll()
           
                 res.status(200).json(drivers)

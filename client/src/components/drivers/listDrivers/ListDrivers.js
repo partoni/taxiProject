@@ -2,7 +2,7 @@
 
 import Driver from "../driver/driver"
 
-const ListDrivers = ({store,showDetails})=>{
+const ListDrivers = ({store,showDetails,chosenDriver})=>{
 // drivers.forEach(element => {
 //     // console.log(element);
 // });
@@ -12,7 +12,9 @@ return(
     <div>
     {store.drivers.map(driver=>{
         // console.log(driver);
-    return <Driver showDetails={showDetails} driver={driver} key={driver.id}/>})}
+        const checked = (driver.callSign===chosenDriver?.callSign)?true:false
+        console.log(`CHECKED____${driver.callSign}-----`,checked);
+    return <Driver showDetails={showDetails} checked={checked}driver={driver} key={driver.id}/>})}
     </div>
 )
 }

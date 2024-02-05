@@ -1,5 +1,5 @@
 .driver{
-    color:white;
+    color:rgb(249, 249, 249);
     opacity: 0.9;
     @apply m-2 flex justify-between cursor-pointer rounded-xl border-b-2 items-center ;
 

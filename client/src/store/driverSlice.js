@@ -16,9 +16,9 @@ const drivers = [
 
 export const fetchDrivers = createAsyncThunk(
     'drivers/fetchDrivers',
-    async function (_,{rejectWithValue}) {
+    async function (city,{rejectWithValue}) {
         try {
-            const data = await fetch('http://localhost:8080/api/driver/getDrivers')
+            const data = await fetch(`http://localhost:8080/api/driver/getDrivers/${city}`)
             
             if(!data.ok)throw new Error('ошибка запроса')
             const drivers = await data.json()
@@ -80,17 +80,23 @@ export const delDriverAsync = createAsyncThunk(
 const driverSlice = createSlice({
     name:"drivers",
     initialState:{
-        drivers:[
-            {id:1,
-            driverName:'Петя',
-            firstName:'Петров',
-            auto:'волга',
-            phone:'98726234',
-            // role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
-            pathPhoto:'/photo',
-            idBot:'983837347',
-            callSign:'1000'}
-        ],
+      
+            
+                drivers:[
+                    {id:1,
+                    driverName:'Петя',
+                    firstName:'Петров',
+                    auto:'волга',
+                    phone:'98726234',
+                    // role:{type:DataTypes.STRING, defaultValue:'DRIVER'},
+                    pathPhoto:'/photo',
+                    idBot:'983837347',
+                    callSign:'1000'}
+                ],  
+            
+          
+        
+       
         status:null,
         error:null,
         city:'volhov'

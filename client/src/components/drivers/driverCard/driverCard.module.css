@@ -39,3 +39,6 @@
 .btNitem{
   @apply border-gray-200 rounded-xl border-2 p-1
 }
+.btnDel{
+  @apply border-gray-200 rounded-lg border-2 px-7 cursor-pointer inline-block
+}

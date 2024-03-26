@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react"
 import styles from "./CreateDriver.module.css"
 import { useForm } from "react-hook-form"
 import { addDriverAsync } from "../../../store/driverSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+
 
 const CreateDriver=()=>{
     const dispatch =useDispatch()
+    const {error} = useSelector(state=>state.drivers)
     // const {error,status,drivers}= useSelector(state=>state.drivers)
     const {register,watch,reset,formState:{errors},handleSubmit} = useForm(
         {
@@ -63,7 +65,7 @@ const CreateDriver=()=>{
     }
         
 return(
-    
+    <React.Fragment className="@apply relative">
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         {console.log(`render`)}
         <h3>Добавить водителя</h3>
@@ -124,7 +126,9 @@ return(
         </div>
         <button className={styles.btn}>Добавить</button>
     </form>
-   
+\
+    {/* {error&&<div className="@apply text-red-800">{error}</div>} */}
+   </React.Fragment>
 )
 }
 export {CreateDriver}

@@ -1,9 +1,16 @@
 import styles from "./Card.module.css"
 
-export const Card = ({children}:{ children: React.ReactElement })=>{
+export const Card = ({id,isVisably,setIsVisably,children}:{id:string,isVisably:string,setIsVisably:(id:string)=>void, children: React.ReactElement })=>{
 return(
-    <div className={styles.card}>
-        {children}
-    </div>
+    <>
+    {
+        id===isVisably
+        ?<div className={styles.activly} onClick={()=>setIsVisably(id)}>{children}</div>
+        :<div className={styles.card} onClick={()=>setIsVisably(id)}>
+    {children}
+</div>
+    }</>
+    
+    
 )
 }

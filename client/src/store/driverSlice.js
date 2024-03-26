@@ -43,7 +43,9 @@ export const addDriverAsync = createAsyncThunk(
                 body:driver
             })
             console.log('DATA______',data);
-            if(!data.ok) new Error('ошибка запроса')
+            if(!data.ok) {
+                console.log('----data ok----');
+               throw new Error(await data.json())}
             const newDriver = await data.json()
             // dispatch(addDriver(newDriver))
             console.log('ADDDriversAsync_____',newDriver);
@@ -56,6 +58,7 @@ export const addDriverAsync = createAsyncThunk(
 export const delDriverAsync = createAsyncThunk(
     'drivers/delDriverAsync',
     async function (driver,{rejectWithValue,dispatch}) {
+        console.log('delDriverAsync =====');
         try {
             const data = await fetch('http://localhost:8080/api/driver/delDriver',{
                 method:"POST",

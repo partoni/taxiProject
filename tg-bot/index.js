@@ -1,11 +1,11 @@
-const TelegramApi = require('node-telegram-bot-api');
+const TelegramApi = require("node-telegram-bot-api");
 const fs = require('fs');
 const fetch = require('node-fetch');
 
 const db = require('./db')
 
 // const client = new Client()
-const token ="5132221550:AAGrAEANR_sbB9hSj6OE1VVc5Hq80Obg52s"
+const token ="5132221550:AAGSXk6Pfxwl-WtC0NS5OmXFMCX2iaQxfBM"
 
 const bot = new TelegramApi(token,{polling:true})
 
@@ -21,17 +21,17 @@ bot.on('message', async (msg) => {
         //         })
         //         })
         // }
-        if(msg.text==='/start'){
+        if(msg.text){
             console.log('menu');
             bot.sendMessage(msg.from.id,`Привет ${msg.from.first_name}`,{
-                reply_markup: JSON.stringify({
-                    keyboard:[
-                        [{text:'Заявка'},{text:'Добавить фото'}],
-                        [{text:'Актуальная информация'}]
+                reply_markup: {
+                    inline_keyboard:[
+                        [{text:'Заявка',callback_data: 'application'},{text:'Добавить фото',callback_data: 'add_photo'}],
+                        [{text:'Актуальная информация',callback_data: 'info'}]
                     ],
-                resize_keyboard: true
+                //resize_keyboard: true
 
-                })
+                }
                 })
         }
         const driver = await db.query('SELECT * from drivers')
@@ -67,24 +67,26 @@ bot.on('message', async (msg) => {
         // https://api.telegram.org/file/bot<token>/<file_path>
         bot.sendMessage(msg.chat.id,'Спасибо')
     }
-   if(msg.text==='Добавить фото'){
+   if(msg.text==='Заявка'){
+    console.log(msg);
     bot.sendMessage(msg.chat.id,'Пожалуйста загрузите фотографии')
    }
    if(msg.text==='Актуальная информация'){
     bot.sendMessage(msg.chat.id,'Информация для сотрудничества')
    }
-   if(msg.text==='Добавить фото'){
-    console.log('добавить фото');
-   }
+  
 });
 
 bot.on('callback_query', async msg => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
-    if (data === '/photo') {
+    if (data === 'application') {
+        bot.sendMessage(chatId,'пожалуйста заполните заявку')
+    }
+    if (data === 'add_photo') {
         bot.sendMessage(chatId,'пожалуйста добавьте фото')
     }
-    if (data === '/info') {
+    if (data === 'info') {
         bot.sendMessage(chatId,'Информация для устройства!!!!!')
     }
     

@@ -12,7 +12,7 @@ import { fetchDrivers } from './store/driverSlice.js';
 import { DriversPage } from './components/drivers/DriversPage.js';
 import { DispetchersPage } from './components/dispetchers/DispetchersPage.js';
 import { HomePage } from './components/homePage/HomePage.js';
-import {  MainPage } from './components/layout/Layout.js';
+import { MainPage } from './components/layout/Layout.js';
 import { UiModal } from './ui/ui-modal/UiModal.tsx';
 import { UiModalField } from './ui/ui-modal/UiModalField';
 
